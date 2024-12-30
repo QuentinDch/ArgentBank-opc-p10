@@ -1,0 +1,27 @@
+// navbar.scss
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 25rem;
+  @media screen and (max-width: 767px) {
+    padding-left: 0;
+  }
+
+  &__logo {
+    max-width: 100%;
+    width: 200rem;
+  }
+
+  &__link {
+    display: flex;
+    gap: 5rem;
+    font-weight: 600;
+    font-size: 16rem;
+    cursor: pointer;
+  }
+  &__link:hover {
+    text-decoration: underline;
+  }
+}

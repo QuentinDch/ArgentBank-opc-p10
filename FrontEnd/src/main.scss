@@ -4,3 +4,6 @@
 @use "./sass/global/mixins.scss";
 @use "./sass/global/reset.scss";
 @use "./sass/global/typography.scss";
+@use "./sass/global/utils.scss";
+
+@use "./sass/components/Navbar.scss";
