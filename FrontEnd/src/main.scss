@@ -6,6 +6,7 @@
 @use "./sass/global/typography.scss";
 @use "./sass/global/utils.scss";
 
+@use "./sass/components/Account.scss";
 @use "./sass/components/Features.scss";
 @use "./sass/components/Footer.scss";
 @use "./sass/components/Form.scss";
@@ -13,3 +14,4 @@
 
 @use "./sass/pages/home.scss";
 @use "./sass/pages/signIn.scss";
+@use "./sass/pages/user.scss";
