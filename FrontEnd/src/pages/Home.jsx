@@ -1,10 +1,11 @@
-import logo from "../../public/images/bank-tree.avif";
+import banner from "../../public/images/bank-tree.avif";
+import Features from "../components/Features";
 
 const Home = () => {
   return (
     <main>
       <div className="hero">
-        <img src={logo} alt="Bank Tree" />
+        <img src={banner} alt="Bank Tree" />
         <section className="hero__content">
           <h2 className="sr-only">Promoted Content</h2>
           <p className="hero__content-subtitle">
@@ -19,6 +20,7 @@ const Home = () => {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
+        <Features />
       </section>
     </main>
   );
