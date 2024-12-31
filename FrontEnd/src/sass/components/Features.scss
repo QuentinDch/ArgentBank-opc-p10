@@ -13,6 +13,7 @@
   flex: 1;
   padding: 37.5rem;
   text-align: center;
+  user-select: none;
   @media screen and (max-width: 767px) {
     padding: 30rem;
   }

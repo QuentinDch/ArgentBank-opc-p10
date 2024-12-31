@@ -15,4 +15,11 @@ body {
   color: #2c3e50;
   background-color: #fff;
   height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  height: 100%;
+  display: flex;
 }
