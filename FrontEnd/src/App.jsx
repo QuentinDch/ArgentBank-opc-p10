@@ -5,6 +5,10 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import User from "./pages/User";
 
+// Redux
+import store from "./redux/store";
+import { Provider } from "react-redux";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +28,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;
