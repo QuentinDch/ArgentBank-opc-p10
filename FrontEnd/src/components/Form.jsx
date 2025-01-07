@@ -1,11 +1,47 @@
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/actions/auth.actions";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const postForm = useRef();
+  const errorRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+
+    const postData = {
+      email: postForm.current[0].value,
+      password: postForm.current[1].value,
+      remember: postForm.current[2].checked,
+    };
+
+    try {
+      const res = await dispatch(loginUser(postData));
+
+      if (res.status === 200) {
+        navigate("/user");
+      }
+    } catch {
+      if (errorRef.current) {
+        errorRef.current.textContent = "Invalid email or password.";
+      }
+    }
+  };
+
   return (
-    <form action="">
+    <form ref={postForm} onSubmit={handleForm}>
+      <div
+        ref={errorRef}
+        className="form-error"
+        role="alert"
+        aria-live="assertive"
+      ></div>
       <div className="input-wrapper">
-        <label htmlFor="username">Username</label>
-        <input id="username" name="username" type="text" required />
+        <label htmlFor="email">Username</label>
+        <input id="email" name="email" type="text" required />
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
@@ -15,12 +51,9 @@ const Form = () => {
         <input id="remember-me" name="remember" type="checkbox" />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <Link to="/user" className="sign-in-button">
+      <button type="submit" className="sign-in-button">
         Sign In
-      </Link>
-      {/* <button type="submit" className="sign-in-button">
-        Sign In
-      </button> */}
+      </button>
     </form>
   );
 };
