@@ -20,3 +20,9 @@
 .bg-dark {
   background-color: #12002b;
 }
+
+.responsive-w100 {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}

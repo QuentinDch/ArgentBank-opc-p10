@@ -6,7 +6,6 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid black;
-  border-radius: 8px;
   background-color: #fff;
   width: 80%;
   margin: 0 auto;
@@ -43,13 +42,12 @@
 
 .transaction-button {
   display: block;
-  padding: 7.5rem;
-  font-size: 16.5rem;
-  font-weight: bold;
-  margin-top: 15rem;
-  border-color: #00bc77;
+  padding: 7.5rem 18.75rem;
+  font-size: 14.0625rem;
+  font-weight: 500;
   background-color: #00bc77;
   color: #fff;
+  border-radius: 9.375rem;
   @media screen and (max-width: 767px) {
     width: 100%;
   }

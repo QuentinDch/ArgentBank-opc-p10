@@ -1,0 +1,43 @@
+// modalFeature.scss
+
+.edit-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+  margin-block: 20rem 10rem;
+}
+
+.edit-modal-item {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    font-size: 14.0625rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+    color: #fff;
+    cursor: pointer;
+    width: max-content;
+  }
+
+  & input {
+    font-size: 18rem;
+    padding: 4rem;
+    border: 1px solid #8f8f9d;
+    border-radius: 2px;
+  }
+  & input:hover {
+    border-color: #676774;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
+  margin-top: 15rem;
+
+  & button {
+    width: 50%;
+  }
+}

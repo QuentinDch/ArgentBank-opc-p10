@@ -12,7 +12,7 @@ const AccountSection = ({ title, amount, description }) => (
   <section className="account">
     <AccountItem title={title} amount={amount} description={description} />
     <div className="account-content-wrapper cta">
-      <button className="transaction-button">View transactions</button>
+      <button className="button responsive-w100">View transactions</button>
     </div>
   </section>
 );
