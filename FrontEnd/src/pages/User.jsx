@@ -30,7 +30,7 @@ const User = () => {
         >
           Edit user info
         </button>
-        {isModalOpen && <ModalFeature />}
+        {isModalOpen && <ModalFeature onClose={toggleModal} />}
       </div>
       <h2 className="sr-only">Accounts</h2>
       <Account />
