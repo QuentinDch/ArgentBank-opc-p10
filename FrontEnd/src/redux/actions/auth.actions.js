@@ -4,7 +4,12 @@ export const loginUser = (postData) => async (dispatch) => {
   try {
     const res = await axios.post(
       "http://localhost:3001/api/v1/user/login",
-      postData
+      postData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
 
     const token = res.data.body.token;

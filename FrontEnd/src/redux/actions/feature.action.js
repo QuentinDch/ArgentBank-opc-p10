@@ -1,24 +1,21 @@
 import axios from "axios";
 
-// Action pour mettre à jour les informations utilisateur
-export const updateUserProfile = (userData, token) => async (dispatch) => {
+export const updateUserProfile = (formData, token) => async (dispatch) => {
   try {
-    // Requête PUT avec les données dans le body
     const res = await axios.put(
       "http://localhost:3001/api/v1/user/profile",
-      userData, // Les données utilisateur à mettre à jour
+      formData,
       {
         headers: {
-          "Content-Type": "application/json", // Définir le type de contenu pour les données JSON
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       }
     );
 
-    // Si la requête est réussie, dispatch l'action avec les nouvelles données utilisateur
     dispatch({
       type: "UPDATE_USER_SUCCESS",
-      payload: res.data, // Les données mises à jour retournées par l'API
+      payload: res.data,
     });
   } catch (err) {
     dispatch({

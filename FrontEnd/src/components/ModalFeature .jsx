@@ -19,7 +19,6 @@ const ModalFeature = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with:", formData);
     // Ajout de l'action Redux
   };
 

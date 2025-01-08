@@ -1,18 +1,22 @@
 const initialState = {
   user: null,
-  token: null,
 };
+
+const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
 
 export const featureReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "UPDATE_USER_SUCCESS":
-      console.log("Updated user data in reducer:", action.payload);
+    case UPDATE_USER_SUCCESS:
       return {
         ...state,
-        user: action.payload,
-        token: action.payload.token,
+        user: {
+          ...state.user,
+          ...action.payload.user,
+        },
       };
-    case "UPDATE_USER_ERROR":
+
+    case UPDATE_USER_ERROR:
       return {
         ...state,
       };

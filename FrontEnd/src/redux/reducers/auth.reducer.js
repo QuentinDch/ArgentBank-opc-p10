@@ -1,7 +1,7 @@
-// État initial
+// États initiaux
 const initialState = {
-  token: null, // Le token d'authentification (initialement null)
-  isAuthenticated: false, // Indicateur si l'utilisateur est authentifié ou non
+  token: null,
+  isAuthenticated: false,
   user: null,
 };
 
@@ -14,24 +14,21 @@ const LOGOUT = "LOGOUT";
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      // Lorsque la connexion réussit, on stocke le token et on met à jour isAuthenticated
       return {
         ...state,
-        token: action.payload, // Le payload contient le token
+        token: action.payload,
         user: action.payload.user,
-        isAuthenticated: true, // L'utilisateur est maintenant authentifié
+        isAuthenticated: true,
       };
     case LOGIN_FAIL:
-      // En cas d'échec de la connexion, on ne change pas l'état
       return {
         ...state,
         token: null,
-        isAuthenticated: false, // L'utilisateur n'est pas authentifié
+        isAuthenticated: false,
       };
     case LOGOUT:
-      // Lorsque l'utilisateur se déconnecte, on réinitialise l'état
-      return initialState; // Réinitialisation de l'état à l'état initial
+      return initialState;
     default:
-      return state; // Retourne l'état inchangé pour les autres actions
+      return state;
   }
 };
