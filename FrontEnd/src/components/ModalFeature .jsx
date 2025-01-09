@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUserProfile } from "../redux/actions/feature.action";
 
 const ModalFeature = ({ onClose }) => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.auth.token);
 
   const [formData, setFormData] = useState({
     username: user?.userName,
@@ -19,7 +22,8 @@ const ModalFeature = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ajout de l'action Redux
+    dispatch(updateUserProfile(formData, token.token));
+    onClose();
   };
 
   return (

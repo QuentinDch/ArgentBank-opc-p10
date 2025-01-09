@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const updateUserProfile = (formData, token) => async (dispatch) => {
+export const updateUserProfile = (data, token) => async (dispatch) => {
   try {
     const res = await axios.put(
       "http://localhost:3001/api/v1/user/profile",
-      formData,
+      data,
       {
         headers: {
           "Content-Type": "application/json",
@@ -21,6 +21,7 @@ export const updateUserProfile = (formData, token) => async (dispatch) => {
     dispatch({
       type: "UPDATE_USER_ERROR",
     });
+    console.error(err);
     throw err;
   }
 };

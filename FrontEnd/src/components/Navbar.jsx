@@ -42,7 +42,7 @@ const Navbar = () => {
               <i>
                 <FontAwesomeIcon icon={faCircleUser} />
               </i>
-              <span>{user?.firstName}</span>
+              <span>{user?.userName}</span>
             </Link>
             <button onClick={handleLogout} className="navbar__link">
               <i>

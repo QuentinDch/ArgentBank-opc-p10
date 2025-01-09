@@ -13,7 +13,7 @@ export const loginUser = (postData) => async (dispatch) => {
     );
 
     const token = res.data.body.token;
-
+    console.log("Token récupéré:", token);
     if (postData.remember) {
       localStorage.setItem("token", token);
     } else {
