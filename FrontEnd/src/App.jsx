@@ -1,4 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchUserProfile } from "./redux/actions/fetchUserProfile.action";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -28,11 +31,26 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    if (token) {
+      dispatch(fetchUserProfile(token));
+    }
+  }, [dispatch]);
+
+  return <RouterProvider router={router} />;
+}
+
+function Root() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <App />
     </Provider>
   );
 }
 
-export default App;
+export default Root;
