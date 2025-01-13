@@ -53,9 +53,10 @@ module.exports.getUserProfile = async (req, res) => {
 
 module.exports.updateUserProfile = async (req, res) => {
   let response = {};
-
+  console.log(req.body);
   try {
     const responseFromService = await userService.updateUserProfile(req);
+    console.log(responseFromService);
     response.status = 200;
     response.message = "Successfully updated user profile data";
     response.body = responseFromService;

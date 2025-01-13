@@ -11,6 +11,10 @@ export const featureReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        auth: {
+          ...state.auth,
+          user: action.payload,
+        },
       };
 
     case UPDATE_USER_ERROR:

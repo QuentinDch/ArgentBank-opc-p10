@@ -1,7 +1,7 @@
 // États initiaux
 const initialState = {
-  token: null,
   isAuthenticated: false,
+  token: null,
   user: null,
 };
 
@@ -16,9 +16,9 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        isAuthenticated: true,
         token: action.payload,
         user: action.payload.user,
-        isAuthenticated: true,
       };
     case LOGIN_FAIL:
       return {
