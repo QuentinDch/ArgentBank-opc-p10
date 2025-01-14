@@ -1,16 +1,11 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { authReducer } from "./reducers/auth.reducer";
-import { featureReducer } from "./reducers/feature.reducer";
-
-// Combiner reducers
-const rootReducer = combineReducers({
-  auth: authReducer, // Reducer pour gérer l'authentification et la récupération donnée profil utilisateur
-  feature: featureReducer, // Reducer pour gérer la feature EditModal
-});
+import { configureStore } from "@reduxjs/toolkit";
+import { authReducer } from "./reducer/auth.reducer";
 
 // Configuration du store Redux
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    auth: authReducer, // Reducer pour gérer l'authentification utilisateur et la gestion du profil (récupération et modification)
+  },
 });
 
 export default store;

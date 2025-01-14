@@ -42,3 +42,28 @@ export const logoutUser = () => (dispatch) => {
   sessionStorage.removeItem("token");
   dispatch({ type: "LOGOUT" });
 };
+
+// Action pour mettre à jour les données utilisateur
+export const updateUserProfile = (formData, token) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      "http://localhost:3001/api/v1/user/profile",
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    // Dispatch de l'action pour mettre à jour les données dans le store
+    dispatch({
+      type: "UPDATE_USER_SUCCESS",
+      payload: res.data.body, // Nouvelle version des données utilisateur
+    });
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

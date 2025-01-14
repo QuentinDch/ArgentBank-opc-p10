@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserProfile } from "../redux/actions/feature.action";
+import { updateUserProfile } from "../redux/actions/auth.actions";
 
 const ModalFeature = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const ModalFeature = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Envoi des modifications au store via l'action updateUserProfile
     dispatch(updateUserProfile(formData, token.token));
     onClose();
   };
