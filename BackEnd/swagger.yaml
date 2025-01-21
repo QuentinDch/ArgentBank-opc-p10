@@ -101,6 +101,148 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
+  /user/transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module Operations
+      summary: Retrieve User Transactions
+      description: Retrieves all transactions for the current month, grouped by account
+      #produces:
+      # - application/json
+      parameters:
+        - in: query
+          name: accountId
+          description: The ID of the account to filter transactions
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: month
+          description: The month of the transactions
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of transactions successfully returned
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid request parameters
+        "404":
+          description: No transactions found for the given criteria
+        "500":
+          description: Internal Server Error
+  /user/transactions/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module Operations
+      summary: Retrieve Transaction Details
+      description: Retrieves detailed information for a specific transaction
+      #produces:
+      # - application/json
+      parameters:
+        - in: path
+          name: id
+          description: The unique identifier of the transaction
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Transaction details successfully returned
+        "404":
+          description: No transaction found for the given ID
+        "500":
+          description: Internal Server Error
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        - User Module Operations
+      summary: Update Transaction Information
+      description: Allows the user to modify the category and add a note to a transaction
+      #produces:
+      # - application/json
+      parameters:
+        - in: path
+          name: id
+          description: The unique identifier of the transaction
+          required: true
+          schema:
+            type: string
+        - in: body
+          name: body
+          description: The transaction attributes to update
+          required: true
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+                description: The new category of the transaction
+              note:
+                type: string
+                description: The note to be added to the transaction
+      responses:
+        "200":
+          description: Transaction updated successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid data provided
+        "404":
+          description: Transaction not found for the given ID
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Module Operations
+      summary: Remove Information from Transaction
+      description: Allows the user to remove specific information (like note or
+        description) associated with a transaction
+      #produces:
+      # - application/json
+      parameters:
+        - in: path
+          name: id
+          description: The unique identifier of the transaction
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: fields
+          description: The list of fields to delete from the transaction (for example, "note", "description")
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+          examples:
+            application/json:
+              fields: ["note", "description"]
+      responses:
+        "200":
+          description: Information removed successfully from the transaction
+          schema:
+            $ref: "#/definitions/ApiResponse"
+          examples:
+            application/json:
+              status: 200
+              message: "Information removed successfully"
+              body:
+                id: "12345"
+                fields: ["note", "description"]
+        "400":
+          description: Invalid data provided (for example, missing required fields or invalid field names)
+        "404":
+          description: ransaction not found for the given ID
+        "500":
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
