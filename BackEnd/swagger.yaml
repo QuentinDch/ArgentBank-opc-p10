@@ -128,7 +128,7 @@ paths:
         "200":
           description: List of transactions successfully returned
           schema:
-            $ref: "#/definitions/ApiResponse"
+            $ref: "#/definitions/Transaction"
         "400":
           description: Invalid request parameters
         "404":
@@ -298,3 +298,29 @@ definitions:
     properties:
       userName:
         type: string
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the transaction
+      date:
+        type: string
+        format: date-time
+        description: Date and time of the transaction
+      amount:
+        type: number
+        format: float
+        description: Transaction amount
+      description:
+        type: string
+        description: Short description or label for the transaction
+      category:
+        type: string
+        description: Category assigned to the transaction (for example Groceries, Utilities)
+      notes:
+        type: string
+        description: Additional notes or comments about the transaction
+      accountId:
+        type: string
+        description: ID of the account associated with the transaction
