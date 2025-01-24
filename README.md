@@ -2,6 +2,8 @@
 
 Dixième projet du parcours **"Intégrateur web"** chez OpenClassroom. <br> L'objectif est d'implémentez le front-end d'une application bancaire avec React et Redux.
 
+![Image de présentation du projet](https://github.com/user-attachments/assets/8583cddc-a969-492f-ba4e-6d2d8f57a6e4)
+
 ## Objectifs du Projet
 
 ## Phase 1: Créer un système d'authentification
