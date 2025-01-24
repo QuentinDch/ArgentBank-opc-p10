@@ -5,7 +5,8 @@ import { updateUserProfile } from "../redux/actions/auth.actions";
 
 const ModalFeature = ({ onClose }) => {
   const dispatch = useDispatch();
-  const { user, token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.auth.token);
 
   const [formData, setFormData] = useState({
     username: user?.userName,

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { persistor } from "../store";
 
 export const loginUser = (postData) => async (dispatch) => {
   try {
@@ -41,6 +42,7 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem("token");
   sessionStorage.removeItem("token");
   dispatch({ type: "LOGOUT" });
+  persistor.purge();
 };
 
 // Action pour mettre à jour les données utilisateur

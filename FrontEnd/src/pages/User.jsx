@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import Account from "../components/Account";
-import ModalFeature from "../components/ModalFeature ";
+import ModalFeature from "../components/ModalFeature";
 
 const User = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
