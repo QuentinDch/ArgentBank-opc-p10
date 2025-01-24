@@ -5,8 +5,7 @@ import { updateUserProfile } from "../redux/actions/auth.actions";
 
 const ModalFeature = ({ onClose }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const token = useSelector((state) => state.auth.token);
+  const { user, token } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     username: user?.userName,
@@ -22,7 +21,6 @@ const ModalFeature = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Envoi des modifications au store via l'action updateUserProfile
     dispatch(updateUserProfile(formData, token.token));
     onClose();
   };
@@ -48,6 +46,7 @@ const ModalFeature = ({ onClose }) => {
           type="text"
           value={formData.firstname}
           onChange={handleChange}
+          readOnly
           required
         />
       </div>
@@ -59,6 +58,7 @@ const ModalFeature = ({ onClose }) => {
           type="text"
           value={formData.lastname}
           onChange={handleChange}
+          readOnly
           required
         />
       </div>
